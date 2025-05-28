@@ -9,7 +9,14 @@
     "db:setup": "createdb kanban_board && psql kanban_board < server/db/schema.sql",
     "db:reset": "dropdb kanban_board && npm run db:setup"
   },
-  "keywords": ["kanban", "task-management", "ai", "javascript", "express", "postgresql"],
+  "keywords": [
+    "kanban",
+    "task-management",
+    "ai",
+    "javascript",
+    "express",
+    "postgresql"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -17,6 +24,7 @@
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "nodemon": "^3.1.10",
+    "openai": "^4.103.0",
     "pg": "^8.16.0"
   }
 }

@@ -1,5 +1,6 @@
 const express = require('express');
 const db = require('../db/connection');
+const { AiService } = require('../services/aiService');
 
 const router = express.Router();
 
@@ -191,11 +192,72 @@ const updateTaskStatus = async (req, res, next) => {
   }
 };
 
+// POST /api/tasks/:id/advice - Generate AI advice for specific task
+const generateTaskAdvice = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    
+    // Validate task ID
+    if (!id || isNaN(parseInt(id))) {
+      return res.status(400).json({
+        success: false,
+        message: 'Invalid task ID'
+      });
+    }
+    
+    // Get task details
+    const taskResult = await db.query(
+      'SELECT id, title, description FROM tasks WHERE id = $1',
+      [parseInt(id)]
+    );
+    
+    if (taskResult.rows.length === 0) {
+      return res.status(404).json({
+        success: false,
+        message: 'Task not found'
+      });
+    }
+    
+    const task = taskResult.rows[0];
+    
+    try {
+      // Generate AI advice
+      const aiService = new AiService();
+      const advice = await aiService.generateTaskAdvice(task.title, task.description);
+      
+      // Store advice in database
+      const updateResult = await db.query(
+        'UPDATE tasks SET ai_advice = $1, ai_advice_timestamp = CURRENT_TIMESTAMP WHERE id = $2 RETURNING ai_advice, ai_advice_timestamp',
+        [advice, parseInt(id)]
+      );
+      
+      res.json({
+        success: true,
+        data: {
+          task_id: parseInt(id),
+          advice: updateResult.rows[0].ai_advice,
+          generated_at: updateResult.rows[0].ai_advice_timestamp
+        }
+      });
+    } catch (aiError) {
+      console.error('AI service error:', aiError.message);
+      res.status(503).json({
+        success: false,
+        message: aiError.message
+      });
+    }
+  } catch (error) {
+    console.error('Error generating task advice:', error);
+    next(error);
+  }
+};
+
 // Route definitions following RESTful conventions
 router.get('/', getAllTasks);
 router.post('/', createTask);
 router.put('/:id', updateTask);
 router.delete('/:id', deleteTask);
 router.patch('/:id/status', updateTaskStatus);
+router.post('/:id/advice', generateTaskAdvice);
 
 module.exports = router;
