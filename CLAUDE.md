@@ -47,6 +47,7 @@ A collaborative Kanban board web application for managing tasks across three wor
 - **Environment Configuration**: Use process.env for sensitive data like API keys
 - **CSS Architecture**: Use CSS custom properties for theming, shared base classes to reduce repetition
 - **DRY Principles**: Extract common patterns into reusable classes (e.g., `.btn` for buttons)
+- **Component Events**: Use custom events for parent-child communication with bubbling
 
 ## Development Workflow
 
