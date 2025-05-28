@@ -95,9 +95,9 @@ During implementation, there are a number of prompts you can use at the start of
 ```markdown
 **First, review `CLAUDE.md` to understand our project standards and workflow.**
 
-Then refresh your memory by checking `HISTORY_[NAME].md`. Review the `ARCHITECTURE.md` and `FUNCTIONAL.md` to understand what we are building.
+Then refresh your memory by checking `HISTORY_MARK.md`. Review the `ARCHITECTURE.md` and `FUNCTIONAL.md` to understand what we are building.
 
-We are working through `TICKETS.md` and are on ticket [TICKET_NUMBER] (I'm [NAME]).
+We are working through `TICKETS.md` and are on ticket 1 (I'm MARK).
 
 **Before implementing anything:**
 
@@ -111,7 +111,27 @@ As you implement, explain:
 - How it aligns with our `ARCHITECTURE.md`
 - Why it complies with our standards in `CLAUDE.md`
 
-Now, [THIS IS WHERE YOU CAN TYPE YOUR PROMPT...]
+Now, here is the ticket detail:
+
+### Ticket 1: Project Structure & Dependencies
+**Assignee**: [MARK]  
+**Dependencies**: None  
+**Priority**: Critical
+
+**Description**: Set up the basic project structure and install required dependencies for both frontend and backend.
+
+**Deliverables**:
+- Create `/client` and `/server` directory structure
+- Initialize `package.json` with required dependencies:
+  - express, cors, pg, dotenv, nodemon (backend)
+- Create `.env.example` file with required environment variables
+- Create basic `package.json` scripts for development
+
+**Definition of Done**:
+- [ ] Directory structure matches architecture specification
+- [ ] All dependencies installed and working
+- [ ] `npm run dev` command available but not necessarily functional yet
+- [ ] Environment configuration documented
 ```
 
 ### DEPENDENCY CHECK
