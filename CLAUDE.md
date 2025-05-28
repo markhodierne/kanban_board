@@ -45,6 +45,8 @@ A collaborative Kanban board web application for managing tasks across three wor
 - **API Communication**: Centralized in ApiClient class with consistent error handling
 - **Database Queries**: Parameterized queries to prevent SQL injection
 - **Environment Configuration**: Use process.env for sensitive data like API keys
+- **CSS Architecture**: Use CSS custom properties for theming, shared base classes to reduce repetition
+- **DRY Principles**: Extract common patterns into reusable classes (e.g., `.btn` for buttons)
 
 ## Development Workflow
 
@@ -126,15 +128,18 @@ Before submitting any code, ensure the following steps are completed:
 
    - **Code Style**: camelCase functions, PascalCase classes, kebab-case CSS
    - **Naming Conventions**: Descriptive function names, clear variable names
-   - **Architecture Patterns**: ES6 classes, async/await, event delegation
+   - **Architecture Patterns**: ES6 classes, async/await, event delegation, CSS custom properties
    - **Error Handling**: Console logging implemented, basic user feedback
    - **API Integration**: OpenAI API properly configured and functional
    - **Database**: Raw SQL queries, parameterized statements, proper schema
+   - **CSS Quality**: DRY principles applied, shared base classes, no duplication
 
 3. **Self-review checklist**:
    - [ ] All functions use descriptive, verb-based names
    - [ ] Classes follow PascalCase convention
    - [ ] CSS classes use kebab-case
+   - [ ] CSS custom properties used for theming
+   - [ ] Shared base classes implemented to reduce repetition
    - [ ] No hardcoded API keys in source code
    - [ ] Database queries use parameterized statements
    - [ ] Error handling implemented for API failures

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanban Board</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <div id="kanban-board" class="kanban-board">
+        <div class="column" id="todo-column">
+            <h2 class="column-header">To Do</h2>
+            <div class="task-list">
+                <div class="task-card">
+                    <h3 class="task-title">Implement user authentication</h3>
+                    <p class="task-description">Add login and signup functionality to the application</p>
+                    <div class="task-actions">
+                        <button class="btn status-button">Move to Doing</button>
+                        <button class="btn delete-button">Delete</button>
+                    </div>
+                </div>
+                <div class="task-card">
+                    <h3 class="task-title">Design homepage layout</h3>
+                    <p class="task-description">Create wireframes and mockups for the main landing page</p>
+                    <div class="task-actions">
+                        <button class="btn status-button">Move to Doing</button>
+                        <button class="btn delete-button">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="column" id="doing-column">
+            <h2 class="column-header">Doing</h2>
+            <div class="task-list">
+                <div class="task-card">
+                    <h3 class="task-title">Set up database schema</h3>
+                    <p class="task-description">Create PostgreSQL tables for user data and tasks</p>
+                    <div class="task-actions">
+                        <button class="btn status-button">Move to Done</button>
+                        <button class="btn delete-button">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="column" id="done-column">
+            <h2 class="column-header">Done</h2>
+            <div class="task-list">
+                <div class="task-card">
+                    <h3 class="task-title">Project setup</h3>
+                    <p class="task-description">Initialize Node.js project with required dependencies</p>
+                    <div class="task-actions">
+                        <button class="btn delete-button">Delete</button>
+                    </div>
+                </div>
+                <div class="task-card">
+                    <h3 class="task-title">Choose tech stack</h3>
+                    <p class="task-description">Research and select appropriate technologies for the project</p>
+                    <div class="task-actions">
+                        <button class="btn delete-button">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
