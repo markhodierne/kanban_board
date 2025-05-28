@@ -172,7 +172,7 @@ Before submitting any code, ensure the following steps are completed:
 - Implement proper foreign key constraints if needed
 
 ### AI Integration
-- Use OpenAI API with gpt-3.5-turbo model
+- Use OpenAI API with gpt-4o model
 - Implement proper prompt engineering for task advice
 - Handle API timeouts and rate limits
 - Store generated advice in database

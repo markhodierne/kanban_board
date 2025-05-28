@@ -279,7 +279,7 @@ class AiService {
     3. Implementation suggestions and efficient approaches`
     
     const response = await this.openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
+      model: "gpt-4o",
       messages: [{ role: "user", content: prompt }],
       max_tokens: 300
     })
