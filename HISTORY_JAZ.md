@@ -45,14 +45,41 @@ client/
     └── ApiClient.js
 ```
 
+### ✅ Ticket 6: ApiClient Class  
+**Status**: Complete  
+**Dependencies**: Ticket 5 (verified complete)
+
+**Key Implementation:**
+- Created `client/scripts/ApiClient.js` with static class pattern
+- Implemented all 5 CRUD methods mapping to backend endpoints:
+  - `getTasks()` → GET `/api/tasks`
+  - `createTask()` → POST `/api/tasks` 
+  - `updateTask()` → PUT `/api/tasks/:id`
+  - `deleteTask()` → DELETE `/api/tasks/:id`
+  - `updateTaskStatus()` → PATCH `/api/tasks/:id/status`
+- Applied consistent async/await with try/catch error handling
+- Returns clean data objects while preserving error context
+
+**Technical Decisions:**
+- **Data Return Strategy**: Return `responseData.data` directly instead of full response objects for simpler component interfaces
+- **Error Handling**: Try/catch blocks with console.error() logging and error re-throwing for component handling
+- **Static Class Pattern**: No instantiation needed, accessible from any component
+- **ES6 Modules**: Named exports following CLAUDE.md standards
+
+**Standards Compliance:**
+- ✅ camelCase method names with descriptive verbs
+- ✅ UPPER_SNAKE_CASE constants (`API_BASE_URL`)  
+- ✅ Async/await throughout (no Promises)
+- ✅ Consistent error handling pattern across all methods
+
 ## Current State
-- **Foundation Ready**: HTML/CSS foundation complete for frontend development
-- **Next Dependencies**: Ticket 4 (Express Server) and Ticket 5 (CRUD API) needed before frontend JS work
-- **Standards Established**: CSS custom properties, shared base classes, kebab-case naming
-- **Code Quality**: DRY principles applied, no duplication in final CSS
+- **Frontend API Layer**: Complete centralized API communication ready for component integration
+- **Next Dependencies**: Ready for Ticket 7 (TaskCard Component)
+- **Standards Established**: Static class patterns, async/await error handling, data-only returns
+- **Integration Ready**: All backend endpoints verified and ApiClient tested
 
 ## Key Patterns Established
-- CSS custom properties for theming
-- Shared base classes (`.btn`, consolidated headers)
-- Semantic HTML structure with descriptive class names
-- Three-column equal-width grid layout (80% viewport width)
+- **CSS**: Custom properties for theming, shared base classes, semantic HTML structure
+- **JavaScript**: Static class patterns, async/await error handling, ES6 named exports
+- **API Communication**: Clean data returns with comprehensive error propagation
+- **Standards**: CLAUDE.md compliance verified for all implementations
