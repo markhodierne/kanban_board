@@ -182,8 +182,8 @@ After creating/updating these files, I'll reset the context window and we'll con
 
 ```markdown
 Read the PR template `PULL_REQUEST_TEMPLATE.md` in .github
-Use the template to make a new file in .github named `PR-7`
-This new PR file will relate to the changes you have just made to implement ticket 7
+Use the template to make a new file in .github named `PR-8`
+This new PR file will relate to the changes you have just made to implement ticket 8
 Edit to add in content to all the required sections and edit where applicable
 
 

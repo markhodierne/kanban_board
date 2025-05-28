@@ -9,60 +9,59 @@
 <body>
     <div id="kanban-board" class="kanban-board">
         <div class="column" id="todo-column">
-            <h2 class="column-header">To Do</h2>
+            <h2 class="column-header">To Do (0)</h2>
             <div class="task-list">
-                <div class="task-card">
-                    <h3 class="task-title">Implement user authentication</h3>
-                    <p class="task-description">Add login and signup functionality to the application</p>
-                    <div class="task-actions">
-                        <button class="btn status-button">Move to Doing</button>
-                        <button class="btn delete-button">Delete</button>
-                    </div>
-                </div>
-                <div class="task-card">
-                    <h3 class="task-title">Design homepage layout</h3>
-                    <p class="task-description">Create wireframes and mockups for the main landing page</p>
-                    <div class="task-actions">
-                        <button class="btn status-button">Move to Doing</button>
-                        <button class="btn delete-button">Delete</button>
-                    </div>
-                </div>
+                <!-- Tasks will be dynamically loaded here -->
             </div>
         </div>
 
         <div class="column" id="doing-column">
-            <h2 class="column-header">Doing</h2>
+            <h2 class="column-header">Doing (0)</h2>
             <div class="task-list">
-                <div class="task-card">
-                    <h3 class="task-title">Set up database schema</h3>
-                    <p class="task-description">Create PostgreSQL tables for user data and tasks</p>
-                    <div class="task-actions">
-                        <button class="btn status-button">Move to Done</button>
-                        <button class="btn delete-button">Delete</button>
-                    </div>
-                </div>
+                <!-- Tasks will be dynamically loaded here -->
             </div>
         </div>
 
         <div class="column" id="done-column">
-            <h2 class="column-header">Done</h2>
+            <h2 class="column-header">Done (0)</h2>
             <div class="task-list">
-                <div class="task-card">
-                    <h3 class="task-title">Project setup</h3>
-                    <p class="task-description">Initialize Node.js project with required dependencies</p>
-                    <div class="task-actions">
-                        <button class="btn delete-button">Delete</button>
-                    </div>
-                </div>
-                <div class="task-card">
-                    <h3 class="task-title">Choose tech stack</h3>
-                    <p class="task-description">Research and select appropriate technologies for the project</p>
-                    <div class="task-actions">
-                        <button class="btn delete-button">Delete</button>
-                    </div>
-                </div>
+                <!-- Tasks will be dynamically loaded here -->
             </div>
         </div>
     </div>
+
+    <script type="module">
+        import { Board } from './scripts/Board.js';
+        
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                const board = new Board('kanban-board');
+                await board.loadTasks();
+                console.log('Kanban board initialized successfully');
+            } catch (error) {
+                console.error('Failed to initialize kanban board:', error);
+                
+                const boardContainer = document.getElementById('kanban-board');
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'initialization-error';
+                errorDiv.innerHTML = `
+                    <h3>Failed to Load Board</h3>
+                    <p>There was an error initializing the kanban board. Please check the console for details.</p>
+                    <p>Make sure the server is running and the database is connected.</p>
+                `;
+                errorDiv.style.cssText = `
+                    background-color: #f8d7da;
+                    border: 1px solid #f5c6cb;
+                    color: #721c24;
+                    padding: 20px;
+                    border-radius: 8px;
+                    margin: 20px;
+                    text-align: center;
+                `;
+                
+                boardContainer.parentNode.insertBefore(errorDiv, boardContainer);
+            }
+        });
+    </script>
 </body>
 </html>
