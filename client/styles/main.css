@@ -133,3 +133,26 @@ body {
 #done-column .task-card {
     border-left-color: var(--color-success);
 }
+
+.task-title.editing,
+.task-description.editing {
+    background-color: var(--color-light);
+    border-radius: 3px;
+    padding: 4px;
+    outline: 2px solid var(--color-primary);
+}
+
+.ai-advice-section {
+    margin: 12px 0;
+    padding: 8px;
+    background-color: var(--color-light);
+    border-radius: 4px;
+    border: 1px dashed #bdc3c7;
+}
+
+.ai-advice-placeholder {
+    font-size: 0.8rem;
+    color: #7f8c8d;
+    font-style: italic;
+    text-align: center;
+}
