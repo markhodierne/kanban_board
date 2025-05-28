@@ -126,6 +126,12 @@ body {
     background-color: var(--color-secondary);
 }
 
+.advice-button {
+    background-color: var(--color-light);
+    color: #2c3e50;
+    border: 1px solid #bdc3c7;
+}
+
 #doing-column .task-card {
     border-left-color: var(--color-warning);
 }

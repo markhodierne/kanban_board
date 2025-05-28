@@ -112,4 +112,27 @@ export class ApiClient {
       throw error;
     }
   }
+
+  // POST /api/tasks/:id/advice - Generate AI advice for specific task
+  static async generateAiAdvice(taskId) {
+    try {
+      const response = await fetch(`${this.API_BASE_URL}/tasks/${taskId}/advice`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      
+      const responseData = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(responseData.message || `HTTP ${response.status}: Failed to generate AI advice`);
+      }
+      
+      return responseData.data; // Return advice data with generated advice and timestamp
+    } catch (error) {
+      console.error('Error generating AI advice:', error);
+      throw error;
+    }
+  }
 }

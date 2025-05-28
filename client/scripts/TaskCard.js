@@ -17,8 +17,21 @@ class TaskCard {
             <div class="task-description" data-field="description">${this.escapeHtml(this.task.description || '')}</div>
             
             <div class="ai-advice-section">
-                <div class="ai-advice-placeholder">
-                    AI advice will be available in future updates
+                <button class="btn advice-button" data-action="get-advice">Get AI Advice</button>
+                <div class="ai-advice-content" style="display: none;">
+                    <div class="ai-advice-header">
+                        <span class="ai-advice-title">AI Guidance</span>
+                        <button class="btn regenerate-advice-button" data-action="regenerate-advice">Regenerate</button>
+                    </div>
+                    <div class="ai-advice-text"></div>
+                    <div class="ai-advice-timestamp"></div>
+                </div>
+                <div class="ai-advice-loading" style="display: none;">
+                    <div class="loading-indicator">Generating AI advice...</div>
+                </div>
+                <div class="ai-advice-error" style="display: none;">
+                    <div class="error-message"></div>
+                    <button class="btn retry-advice-button" data-action="retry-advice">Retry</button>
                 </div>
             </div>
             
@@ -30,6 +43,7 @@ class TaskCard {
 
         this.element = taskCard;
         this.attachEventListeners();
+        this.initializeAiAdviceDisplay();
         return taskCard;
     }
 
@@ -61,6 +75,10 @@ class TaskCard {
         } else if (action === 'status') {
             const nextStatus = e.target.dataset.nextStatus;
             this.handleStatusChange(nextStatus);
+        } else if (action === 'get-advice' || action === 'retry-advice') {
+            this.requestAiAdvice();
+        } else if (action === 'regenerate-advice') {
+            this.requestAiAdvice(true);
         }
     }
 
@@ -208,6 +226,89 @@ class TaskCard {
         const selection = window.getSelection();
         selection.removeAllRanges();
         selection.addRange(range);
+    }
+
+    initializeAiAdviceDisplay() {
+        if (this.task.ai_advice) {
+            this.displayAiAdvice(this.task.ai_advice, this.task.ai_advice_timestamp);
+        }
+    }
+
+    async requestAiAdvice(isRegenerate = false) {
+        if (!this.element) return;
+
+        try {
+            this.showAiAdviceLoading();
+            this.hideAiAdviceError();
+
+            const result = await ApiClient.generateAiAdvice(this.task.id);
+            
+            this.task.ai_advice = result.advice;
+            this.task.ai_advice_timestamp = result.generated_at;
+            
+            this.displayAiAdvice(result.advice, result.generated_at);
+            this.hideAiAdviceLoading();
+            
+        } catch (error) {
+            console.error('Error requesting AI advice:', error);
+            this.hideAiAdviceLoading();
+            this.showAiAdviceError(error.message || 'Failed to generate AI advice. Please try again.');
+        }
+    }
+
+    displayAiAdvice(advice, timestamp) {
+        if (!this.element || !advice) return;
+
+        const adviceButton = this.element.querySelector('.advice-button');
+        const adviceContent = this.element.querySelector('.ai-advice-content');
+        const adviceText = this.element.querySelector('.ai-advice-text');
+        const adviceTimestamp = this.element.querySelector('.ai-advice-timestamp');
+
+        if (adviceButton) adviceButton.style.display = 'none';
+        if (adviceContent) {
+            adviceContent.style.display = 'block';
+            if (adviceText) adviceText.textContent = advice;
+            if (adviceTimestamp && timestamp) {
+                const formattedTime = new Date(timestamp).toLocaleString();
+                adviceTimestamp.textContent = `Generated: ${formattedTime}`;
+            }
+        }
+    }
+
+    showAiAdviceLoading() {
+        if (!this.element) return;
+
+        const adviceButton = this.element.querySelector('.advice-button');
+        const adviceLoading = this.element.querySelector('.ai-advice-loading');
+        const adviceContent = this.element.querySelector('.ai-advice-content');
+
+        if (adviceButton) adviceButton.style.display = 'none';
+        if (adviceContent) adviceContent.style.display = 'none';
+        if (adviceLoading) adviceLoading.style.display = 'block';
+    }
+
+    hideAiAdviceLoading() {
+        if (!this.element) return;
+
+        const adviceLoading = this.element.querySelector('.ai-advice-loading');
+        if (adviceLoading) adviceLoading.style.display = 'none';
+    }
+
+    showAiAdviceError(errorMessage) {
+        if (!this.element) return;
+
+        const adviceError = this.element.querySelector('.ai-advice-error');
+        const errorMessageElement = this.element.querySelector('.error-message');
+
+        if (adviceError) adviceError.style.display = 'block';
+        if (errorMessageElement) errorMessageElement.textContent = errorMessage;
+    }
+
+    hideAiAdviceError() {
+        if (!this.element) return;
+
+        const adviceError = this.element.querySelector('.ai-advice-error');
+        if (adviceError) adviceError.style.display = 'none';
     }
 
     escapeHtml(text) {

@@ -26,8 +26,7 @@ class AiService {
         model: "gpt-4o",
         messages: [{ role: "user", content: prompt }],
         max_tokens: 300,
-        temperature: 0.7,
-        timeout: 10000
+        temperature: 0.7
       });
       
       return response.choices[0].message.content.trim();
@@ -50,7 +49,9 @@ Please provide practical advice covering:
 
 3. IMPLEMENTATION STRATEGY: Suggest efficient approaches, tools, or techniques. Break down complex work into manageable steps.
 
-Keep advice actionable and concise. Focus on practical guidance that helps ensure successful task completion.`;
+Keep advice actionable and concise. Focus on practical guidance that helps ensure successful task completion.
+
+IMPORTANT: Limit your response to a maximum of 100 words.`;
 
     return basePrompt;
   }
