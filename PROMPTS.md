@@ -97,7 +97,7 @@ During implementation, there are a number of prompts you can use at the start of
 
 Then refresh your memory by checking `HISTORY_MARK.md`. Review the `ARCHITECTURE.md` and `FUNCTIONAL.md` to understand what we are building.
 
-We are working through `TICKETS.md` and are on ticket 1 (I'm MARK).
+We are working through `TICKETS.md` and are on ticket 5 (I'm MARK).
 
 **Before implementing anything:**
 
@@ -113,25 +113,29 @@ As you implement, explain:
 
 Now, here is the ticket detail:
 
-### Ticket 1: Project Structure & Dependencies
+### Ticket 5: Tasks CRUD API Endpoints
 **Assignee**: [MARK]  
-**Dependencies**: None  
-**Priority**: Critical
+**Dependencies**: Tickets 2, 4  
+**Priority**: High
 
-**Description**: Set up the basic project structure and install required dependencies for both frontend and backend.
+**Description**: Implement RESTful API endpoints for task management (Create, Read, Update, Delete).
 
 **Deliverables**:
-- Create `/client` and `/server` directory structure
-- Initialize `package.json` with required dependencies:
-  - express, cors, pg, dotenv, nodemon (backend)
-- Create `.env.example` file with required environment variables
-- Create basic `package.json` scripts for development
+- Create `server/routes/tasks.js` with all CRUD endpoints
+- Implement GET, POST, PUT, DELETE, PATCH operations
+- Use parameterized SQL queries for security
+- Follow RESTful conventions as per architecture spec
 
 **Definition of Done**:
-- [ ] Directory structure matches architecture specification
-- [ ] All dependencies installed and working
-- [ ] `npm run dev` command available but not necessarily functional yet
-- [ ] Environment configuration documented
+- [ ] GET `/api/tasks` - Returns all tasks
+- [ ] POST `/api/tasks` - Creates new task
+- [ ] PUT `/api/tasks/:id` - Updates existing task
+- [ ] DELETE `/api/tasks/:id` - Deletes task
+- [ ] PATCH `/api/tasks/:id/status` - Updates task status only
+- [ ] All endpoints use parameterized queries
+- [ ] Proper error handling and status codes
+- [ ] Response format matches architecture specification
+
 ```
 
 ### DEPENDENCY CHECK
@@ -143,7 +147,7 @@ Now, here is the ticket detail:
 > Use this prompt if ticket dependencies or scope is unclear or overlapping.
 
 ```markdown
-Before starting this ticket [TICKET_NUMBER], check `TICKETS.md` for dependencies. Then:
+Before starting this ticket 2, check `TICKETS.md` for dependencies. Then:
 
 1. Verify all prerequisite tickets are complete
 2. Confirm our implementation aligns with dependent tickets
@@ -161,7 +165,7 @@ Only proceed when dependencies are satisfied and coordination is clear.
 ```markdown
 Now we will reset the context window, before we do so:
 
-1. Create/update a `HISTORY_[NAME].md` file summarising our progress
+1. Create/update a `HISTORY_MARK.md` file summarising our progress
 2. List completed tickets with key implementation details
 3. Note any important decisions or patterns established
 4. Mention any deviations from original specs and why
@@ -172,3 +176,13 @@ Now we will reset the context window, before we do so:
 
 After creating/updating these files, I'll reset the context window and we'll continue with a fresh session.
 ```
+
+
+### PR TEMPLATE
+
+```markdown
+Read the PR template `PULL_REQUEST_TEMPLATE.md` in .github
+This PR will relate to the changes you have just made to implement Ticket 5
+Edit to add in content to all the required sections and edit where applicable
+
+

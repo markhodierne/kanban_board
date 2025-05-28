@@ -21,8 +21,9 @@ app.get('/health', (req, res) => {
   res.json({ status: 'ok', message: 'Kanban board server is running' });
 });
 
-// API routes will be added here in future tickets
-// app.use('/api/tasks', taskRoutes);
+// API routes
+const taskRoutes = require('./routes/tasks');
+app.use('/api/tasks', taskRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
