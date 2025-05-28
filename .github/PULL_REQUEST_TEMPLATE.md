@@ -1,3 +1,4 @@
+
 # PR: Ticket 6 - ApiClient Class
 
 ## Original Ticket
@@ -137,4 +138,3 @@ try {
 - Establish consistent error handling patterns early and apply them uniformly across all methods
 - Use static class patterns for stateless service layers that need to be accessed from multiple components
 - Prioritize async/await patterns for cleaner, more maintainable asynchronous code
-
