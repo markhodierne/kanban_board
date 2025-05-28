@@ -156,3 +156,117 @@ body {
     font-style: italic;
     text-align: center;
 }
+
+/* Task Form Styles */
+.task-form-container {
+    background-color: var(--color-white);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--color-light);
+}
+
+.form-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--color-secondary);
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-secondary);
+    margin-bottom: 6px;
+}
+
+.form-input,
+.form-textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 2px solid var(--color-light);
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-family: inherit;
+    color: var(--color-secondary);
+    background-color: var(--color-white);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.form-input.error,
+.form-textarea.error {
+    border-color: #e74c3c;
+    box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.error-message {
+    font-size: 0.8rem;
+    color: #e74c3c;
+    margin-top: 4px;
+    display: none;
+}
+
+.form-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    flex: 1;
+}
+
+.btn-secondary {
+    background-color: var(--color-secondary);
+    flex: 0 0 auto;
+    padding: 6px 16px;
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.loading-spinner {
+    font-size: 1rem;
+}
+
+.form-message {
+    margin-top: 12px;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    display: none;
+}
+
+.form-message.success {
+    background-color: #d5f4e6;
+    color: #27ae60;
+    border: 1px solid #b8e6cc;
+}
+
+.form-message.error {
+    background-color: #fdf2f2;
+    color: #e74c3c;
+    border: 1px solid #f5c6cb;
+}

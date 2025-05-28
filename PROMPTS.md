@@ -165,7 +165,7 @@ Only proceed when dependencies are satisfied and coordination is clear.
 ```markdown
 Now we will reset the context window, before we do so:
 
-1. Create/update a `HISTORY_MARK.md` file summarising our progress
+1. Create/update a `HISTORY_JAZ.md` file summarising our progress
 2. List completed tickets with key implementation details
 3. Note any important decisions or patterns established
 4. Mention any deviations from original specs and why
@@ -182,8 +182,8 @@ After creating/updating these files, I'll reset the context window and we'll con
 
 ```markdown
 Read the PR template `PULL_REQUEST_TEMPLATE.md` in .github
-Use the template to make a new file in .github named `PR-8`
-This new PR file will relate to the changes you have just made to implement ticket 8
+Use the template to make a new file in .github named `PR-9`
+This new PR file will relate to the changes you have just made to implement ticket 9
 Edit to add in content to all the required sections and edit where applicable
 
 

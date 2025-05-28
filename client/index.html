@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
+    <!-- Task Form Container will be created dynamically by main.js -->
+    
     <div id="kanban-board" class="kanban-board">
         <div class="column" id="todo-column">
             <h2 class="column-header">To Do (0)</h2>
@@ -30,38 +32,6 @@
         </div>
     </div>
 
-    <script type="module">
-        import { Board } from './scripts/Board.js';
-        
-        document.addEventListener('DOMContentLoaded', async () => {
-            try {
-                const board = new Board('kanban-board');
-                await board.loadTasks();
-                console.log('Kanban board initialized successfully');
-            } catch (error) {
-                console.error('Failed to initialize kanban board:', error);
-                
-                const boardContainer = document.getElementById('kanban-board');
-                const errorDiv = document.createElement('div');
-                errorDiv.className = 'initialization-error';
-                errorDiv.innerHTML = `
-                    <h3>Failed to Load Board</h3>
-                    <p>There was an error initializing the kanban board. Please check the console for details.</p>
-                    <p>Make sure the server is running and the database is connected.</p>
-                `;
-                errorDiv.style.cssText = `
-                    background-color: #f8d7da;
-                    border: 1px solid #f5c6cb;
-                    color: #721c24;
-                    padding: 20px;
-                    border-radius: 8px;
-                    margin: 20px;
-                    text-align: center;
-                `;
-                
-                boardContainer.parentNode.insertBefore(errorDiv, boardContainer);
-            }
-        });
-    </script>
+    <script type="module" src="scripts/main.js"></script>
 </body>
 </html>
